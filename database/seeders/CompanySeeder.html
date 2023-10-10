@@ -1,0 +1,49 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
+class CompanySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+        $faker = Faker::create('id');
+ 
+    	for($i = 1; $i <= 15; $i++){
+            DB::table('companies')->insert([
+                'name' => $faker->name,
+                'address' => $faker->address,
+                'website' => $faker->text,
+                'email' => $faker->email,
+                'created_at' => now(),
+                'updated_at' => now(),
+                ]);
+        }
+
+        // $companies=[];
+        // foreach (range (1, 10) as $index) {
+        //     $company = [
+        //         'name' => $name = "Comapny $index",
+        //         'address' => "Address $name",
+        //         'website' => "Website $name",
+        //         'email' => "Email $name",
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ];
+        //     $companies[] = $company;
+        // }
+
+        // DB::table('companies')->delete();
+        // DB::table('companies')->insert($companies);
+    }
+}
